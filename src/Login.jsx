@@ -2,7 +2,7 @@ import React, {  useState } from "react";
 import { Redirect } from "react-router-dom";
 import "./Login.css";
 
-export const Login = () => {
+ const Login = () => {
 
   const [UtilisateurEmailAddress, setUtilisateurEmailAddress] = useState('');
   const [UtilisateurPassword, setUtilisateurPassword] = useState('');
@@ -73,3 +73,5 @@ export const Login = () => {
     );
  
 }
+
+export default Login;

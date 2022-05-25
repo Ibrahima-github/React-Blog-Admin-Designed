@@ -6,7 +6,7 @@ import {Button, ButtonToolbar, Table} from 'react-bootstrap';
 import { Navigation } from './Navigation';
 import './App.css';
 
-export class Utilisateurs extends Component {
+ class Utilisateurs extends Component {
     constructor(props){
         super(props);
         this.state={utilisateur:[], addModalShow: false, editModalShow: false, UtilisateurUsername: false};
@@ -140,3 +140,4 @@ export class Utilisateurs extends Component {
 
     }
 
+    export default Utilisateurs;

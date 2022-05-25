@@ -6,7 +6,7 @@ import {Button, ButtonToolbar, Table} from 'react-bootstrap';
 import { Navigation } from './Navigation';
 import './App.css';
 
-export class Categories extends Component {
+ class Categories extends Component {
     constructor(props){
         super(props);
         this.state={category:[], addModalShow: false, editModalShow: false};
@@ -137,3 +137,4 @@ export class Categories extends Component {
 
     }
 
+    export default Categories;

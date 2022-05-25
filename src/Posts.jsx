@@ -5,7 +5,7 @@ import { EditPost } from './components/EditPost';
 import {Button, ButtonToolbar, Table} from 'react-bootstrap';
 import { Navigation } from './Navigation';
 
-export class Posts extends Component {
+ class Posts extends Component {
     constructor(props){
         super(props);
         this.state={post:[], addModalShow: false, editModalShow: false, UtilisateurUsername: false};
@@ -157,3 +157,4 @@ export class Posts extends Component {
 
     }
 
+    export default Posts;
