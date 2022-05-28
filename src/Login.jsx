@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, {  useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import "./Login.css";
 
@@ -7,6 +7,7 @@ import "./Login.css";
   const [UtilisateurEmailAddress, setUtilisateurEmailAddress] = useState('');
   const [UtilisateurPassword, setUtilisateurPassword] = useState('');
   const [redirection, setRedirection] = useState(false);
+  
 
   const submit = async(e) => {
     e.preventDefault();
@@ -17,10 +18,12 @@ import "./Login.css";
         'Accept': 'application/json',
         'Content-type': 'application/json'
       },
+      credentials: 'include',
       body: JSON.stringify({
         UtilisateurEmailAddress,
         UtilisateurPassword
       })
+      
     });
 
     const content = await response.json();
@@ -31,11 +34,14 @@ import "./Login.css";
       alert(content.message);
     }
     console.log(content);
+    
+    
   }
+        
   if(redirection){
     return <Redirect to="/home" />
-  }
-  
+  }  
+          
 
  
 

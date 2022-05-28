@@ -10,10 +10,7 @@ import {Link, Redirect} from 'react-router-dom';
    const Logout = async () =>{
     const response = await fetch(process.env.REACT_APP_API + 'utilisateurs/logout', {
         method: "POST",
-        headers:{'Content-type': 'application/json', 'Accept': 'application/json',
-        'Access-Control-Allow-Origin': 'https://admin.ibrahimasall.com',
-        "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Requested-With"},
+        headers:{'Content-type': 'application/json', 'Accept': 'application/json'},
         credentials: "include"
     })
     console.log(response);
@@ -21,7 +18,7 @@ import {Link, Redirect} from 'react-router-dom';
 }
 if(redirect){
 
-  return <Redirect to="/login" />
+  return <Redirect to="/" />
 }
         return(
             <nav id="nav-wrap">
