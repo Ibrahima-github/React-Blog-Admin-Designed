@@ -16,9 +16,9 @@ import "./Login.css";
       method: 'POST',
       headers: {
         'Accept': 'application/json',
-        'Content-type': 'application/json'
+        'Content-Type': 'application/json'
       },
-      credentials: 'include',
+      credentials:"include",
       body: JSON.stringify({
         UtilisateurEmailAddress,
         UtilisateurPassword

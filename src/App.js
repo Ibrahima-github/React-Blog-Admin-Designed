@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Posts from './Posts';
 import Categories from './Categories';
 import Utilisateurs from './Utilisateurs';
@@ -11,7 +11,9 @@ import PrivateRoute from './PrivateRoute';
 
 function App() {
 
-  
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+ 
     
     return (
       <BrowserRouter>
@@ -19,12 +21,12 @@ function App() {
             
                 <Switch>
                     
-                    <Route path='/'  component={Login}  exact/>
-                    < PrivateRoute path="/home" component={Home} />
-                    <PrivateRoute path='/posts' component={Posts} />
-                    <PrivateRoute path='/utilisateurs' component={Utilisateurs} />
-                    <PrivateRoute path='/addCategorie' component={AddCategorie} />
-                    <PrivateRoute path='/categories' component={Categories} />
+                    < Route path="/" component={Login} exact />
+                    <PrivateRoute isLoggedIn={setIsLoggedIn} path='/home'  component={Home}  />
+                    <PrivateRoute isLoggedIn={setIsLoggedIn}  path='/posts' component={Posts} />
+                    <PrivateRoute isLoggedIn={setIsLoggedIn}  path='/utilisateurs' component={Utilisateurs} />
+                    <PrivateRoute isLoggedIn={setIsLoggedIn}   path='/addCategorie' component={AddCategorie} />
+                    <PrivateRoute isLoggedIn={setIsLoggedIn}  path='/categories' component={Categories} />
                     <Route path='*' component={() => <h1>Erreur 404! Désolé, cette page n'existe pas.</h1>} />
                 </Switch>
            
