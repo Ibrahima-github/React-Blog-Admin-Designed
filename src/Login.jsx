@@ -12,28 +12,27 @@ import "./Login.css";
   const submit = async(e) => {
     e.preventDefault();
 
-    const response = await fetch(process.env.REACT_APP_API + 'utilisateurs/login', {
+    await fetch(process.env.REACT_APP_API + 'utilisateurs/login', {
       method: 'POST',
       headers: {
-        'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      credentials:"include",
+      credentials:"same-origin",
       body: JSON.stringify({
         UtilisateurEmailAddress,
         UtilisateurPassword
       })
       
     });
+    setRedirection(true);
 
-    const content = await response.json();
+    /* const content = await response.json();
     
     if(content.message === 'success'){
-      setRedirection(true);
     }else{
       alert(content.message);
     }
-    console.log(content);
+    console.log(content); */
     
     
   }

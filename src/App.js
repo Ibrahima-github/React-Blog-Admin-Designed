@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useState} from 'react';
 import Posts from './Posts';
 import Categories from './Categories';
 import Utilisateurs from './Utilisateurs';
@@ -22,11 +22,11 @@ function App() {
                 <Switch>
                     
                     < Route path="/" component={Login} exact />
-                    <PrivateRoute isLoggedIn={setIsLoggedIn} path='/home'  component={Home}  />
-                    <PrivateRoute isLoggedIn={setIsLoggedIn}  path='/posts' component={Posts} />
-                    <PrivateRoute isLoggedIn={setIsLoggedIn}  path='/utilisateurs' component={Utilisateurs} />
-                    <PrivateRoute isLoggedIn={setIsLoggedIn}   path='/addCategorie' component={AddCategorie} />
-                    <PrivateRoute isLoggedIn={setIsLoggedIn}  path='/categories' component={Categories} />
+                    <PrivateRoute isLoggedIn={isLoggedIn} path='/home'  component={Home}  />
+                    <PrivateRoute isLoggedIn={isLoggedIn}  path='/posts' component={Posts} />
+                    <PrivateRoute isLoggedIn={isLoggedIn}  path='/utilisateurs' component={Utilisateurs} />
+                    <PrivateRoute isLoggedIn={isLoggedIn}   path='/addCategorie' component={AddCategorie} />
+                    <PrivateRoute isLoggedIn={isLoggedIn} path='/categories' component={Categories} />
                     <Route path='*' component={() => <h1>Erreur 404! Désolé, cette page n'existe pas.</h1>} />
                 </Switch>
            
