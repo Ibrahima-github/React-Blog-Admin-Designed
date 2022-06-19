@@ -1,0 +1,84 @@
+import React, {  useState, useEffect } from "react";
+import { Redirect } from "react-router-dom";
+import "./Login.css";
+
+ const Login = () => {
+
+  const [UtilisateurEmailAddress, setUtilisateurEmailAddress] = useState('');
+  const [UtilisateurPassword, setUtilisateurPassword] = useState('');
+  const [redirection, setRedirection] = useState(false);
+  
+
+  const submit = async(e) => {
+    e.preventDefault();
+
+    const request = await fetch(process.env.REACT_APP_API + 'utilisateurs/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials:"include",
+      body: JSON.stringify({
+        UtilisateurEmailAddress,
+        UtilisateurPassword
+      })
+      
+    });
+
+    const response = await request.json();
+
+    console.log(response.message);
+
+    if(response.message === "success"){
+
+      setRedirection(true);
+    }else{
+      alert(response.message); 
+    }
+    
+    
+  }
+        
+  if(redirection){
+    return <Redirect to="/home" />
+  }  
+          
+
+ 
+
+    return (
+      <div className="Login">
+        <main className="form-signin">
+          <form onSubmit={submit}>
+            <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
+
+            <div className="form-floating">
+              <input 
+                type="email" 
+                className="form-control" 
+                id="floatingInput" 
+                placeholder="name@example.com" 
+                onChange={e => setUtilisateurEmailAddress(e.target.value)} />
+              <label >Email address</label>
+            </div>
+            <div className="form-floating">
+              <input 
+                type="password" 
+                className="form-control" 
+                id="floatingPassword" 
+                placeholder="Password" 
+                onChange={e => setUtilisateurPassword(e.target.value)}  />
+              <label >Password</label>
+            </div>
+
+            <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+
+          </form>
+        </main>
+      </div>
+
+    );
+ 
+}
+
+export default Login;
